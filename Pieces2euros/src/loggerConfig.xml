@@ -55,7 +55,7 @@
 		############################################
 	-->
 
-	<logger name="com.evolutionmm">
+	<logger name="com.brownie">
 		<level value="info" />
 	</logger>
 
