@@ -67,7 +67,7 @@ public class SQLiteJDBC {
 			stmt.executeUpdate(sql);
 
 			sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) "
-					+ "VALUES (2, 'Allen', 25, 'Texas', 15000.00 );";
+			 + "VALUES (2, 'Allen', 25, 'Texas', 15000.00 );";
 			stmt.executeUpdate(sql);
 
 			sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) "
@@ -82,6 +82,7 @@ public class SQLiteJDBC {
 			connection.commit();
 			connection.close();
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
 		}
@@ -98,9 +99,6 @@ public class SQLiteJDBC {
 			System.out.println("Opened database successfully");
 
 			stmt = connection.createStatement();
-			String sql = "DELETE from COMPANY where ID=2;";
-			stmt.executeUpdate(sql);
-			connection.commit();
 
 			ResultSet rs = stmt.executeQuery("SELECT * FROM COMPANY;");
 			while (rs.next()) {

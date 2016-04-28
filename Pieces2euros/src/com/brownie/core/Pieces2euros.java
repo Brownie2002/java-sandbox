@@ -13,8 +13,8 @@ public class Pieces2euros {
 	public Pieces2euros() throws Exception {
 
 		SQLiteJDBC WebStore = new SQLiteJDBC();
-//		WebStore.createDB();
-//		WebStore.populateDB();
+		WebStore.createDB();
+		WebStore.populateDB();
 		WebStore.showItems();
 		logger.info("Test");
 
