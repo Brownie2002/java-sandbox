@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+	<!--
+		###########################
+		### Appenders for Log4J ###
+		###########################
+	-->
+
+
+	<!-- StdOut appender -->
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<param name="Threshold" value="all" />
+		<param name="ImmediateFlush" value="true" />
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%t] %-5p | %-30c | %m (%F:%L)%n" />
+		</layout>
+	</appender>
+
+	<!-- File appender -->
+	<appender name="FILE_LOG" class="org.apache.log4j.FileAppender">
+		<param name="Threshold" value="all" />
+		<param name="ImmediateFlush" value="true" />
+		<param name="Append" value="false" />
+		<param name="BufferedIO" value="true" />
+		<param name="File" value="file.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d | [%t] %-5p | %-60c | %m (%F:%L)%n" />
+			<!-- WARNING: The use of %F and %L convertion characters
+				should be avoided when execution speed is an issue -->
+		</layout>
+	</appender>
+
+	<!-- Chainsaw appender -->
+	<appender name="CHAINSAW_CLIENT"
+		class="org.apache.log4j.net.SocketAppender">
+		<param name="Threshold" value="all" />
+		<param name="Port" value="4445" />
+		<param name="RemoteHost" value="localhost" />
+		<param name="LocationInfo" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%t] %-5p | %-60c | %m (%F:%L)%n" />
+		</layout>
+	</appender>
+
+
+	<!--
+		############################################
+		### Logger levels definition for Log4J   ###
+		############################################
+	-->
+
+	<logger name="com.evolutionmm">
+		<level value="info" />
+	</logger>
+
+	<!--
+		######################################################
+		### Default logger parameters definition for LOG4J ###
+		######################################################
+	-->
+
+	<root>
+		<level value="error" />
+
+		<appender-ref ref="STDOUT" />
+		<!-- appender-ref ref="CHAINSAW_CLIENT" / -->
+		<!-- appender-ref ref="FILE_LOG" / -->
+		
+	</root>
+
+</log4j:configuration>
