@@ -16,7 +16,7 @@
 		<param name="Target" value="System.out" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern"
-				value="[%t] %-5p | %-30c | %m (%F:%L)%n" />
+				value="[%t] %-5p | %-30c | %m (%F:%M:%L)%n" />
 		</layout>
 	</appender>
 

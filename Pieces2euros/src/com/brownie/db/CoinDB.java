@@ -98,6 +98,11 @@ public class CoinDB {
 					+ "VALUES (null,'FINLANDE', 2007, 'FE' );";
 			stmt.executeUpdate(sql);
 
+			sql = "INSERT INTO " + tableReferenceCoins
+					+ " (ID,COUNTRY,YEAR,REFERENCE) "
+					+ "VALUES (null,'FRANCE', 2013, 'COMMON' );";
+			stmt.executeUpdate(sql);
+
 			stmt.close();
 			connection.commit();
 			connection.close();
@@ -106,37 +111,8 @@ public class CoinDB {
 			logger.error(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
 		}
-		logger.info("Records created successfully");
-	}
-
-	public void showReferenceCoins() {
-		Statement stmt = null;
-		try {
-
-			Class.forName(jdbcDriverClass);
-			connection = DriverManager.getConnection(jdbcDatabaseUrl);
-			connection.setAutoCommit(false);
-			logger.info("Opened database successfully");
-
-			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM "
-					+ tableReferenceCoins + ";");
-			while (rs.next()) {
-				int id = rs.getInt("ID");
-				String country = rs.getString("COUNTRY");
-				int year = rs.getInt("YEAR");
-				String reference = rs.getString("REFERENCE");
-				System.out.println("ID = " + id + "; COUNTRY = " + country
-						+ "; REFERENCE = " + reference + "; YEAR = " + year);
-			}
-			rs.close();
-			stmt.close();
-			connection.close();
-		} catch (Exception e) {
-			logger.error(e.getClass().getName() + ": " + e.getMessage());
-			System.exit(0);
-		}
-		logger.info("Operation done successfully");
+		if (logger.isInfoEnabled())
+			logger.info("Records created successfully");
 	}
 
 	public List<Coin> getReferenceCoins() {
@@ -169,7 +145,8 @@ public class CoinDB {
 			logger.error(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
 		}
-		logger.info("Operation done successfully");
+		if (logger.isInfoEnabled())
+			logger.info("Operation done successfully");
 		return referenceCoins;
 	}
 

@@ -20,18 +20,15 @@ public class Pieces2euros {
 		CoinDB dataBase = new CoinDB();
 		dataBase.createDB();
 		dataBase.populateDB();
-		dataBase.showReferenceCoins();
 
 		referenceCoins = dataBase.getReferenceCoins();
-
-		Coin singleCoin = new Coin(18, "ALLEMAGNE", "FE", 2013);
-
-		referenceCoins.add(singleCoin);
 
 		for (Coin coin : referenceCoins) {
 			System.out.println(coin.toString());
 		}
-
+		if (logger.isInfoEnabled()) {
+			logger.info("End of program !");
+		}
 	}
 
 }
