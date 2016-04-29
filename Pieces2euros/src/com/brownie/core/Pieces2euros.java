@@ -18,6 +18,7 @@ public class Pieces2euros {
 		List<Coin> referenceCoins = new ArrayList<Coin>();
 
 		CoinDB dataBase = new CoinDB();
+		
 		dataBase.createDB();
 		dataBase.populateDB();
 
